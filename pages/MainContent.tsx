@@ -6,6 +6,7 @@ interface MainContentProps {
   createTodo: () => void;
   deleteTodo: (id: string) => void;
   signOut?: () => void;
+  userId?: string;
 }
 
 export const MainContent: React.FC<MainContentProps> = ({
@@ -13,9 +14,10 @@ export const MainContent: React.FC<MainContentProps> = ({
   createTodo,
   deleteTodo,
   signOut,
+  userId,
 }) => (
   <main>
-    <h1>My todos</h1>
+    {userId ? <h1>{userId} `s todos</h1> : <h1>My todos</h1>}
     <button onClick={createTodo}>+ new</button>
     <ul>
       {todos.map((todo) => (

@@ -38,14 +38,15 @@ export default function App() {
   if (process.env.NEXT_PUBLIC_ENV === "PROD") {
     return (
       <Authenticator>
-        {({ signOut: authSignOut, user: authUser }) => {
-          setUser(authUser);
+        {({ signOut, user }) => {
+          setUser(user);
           return (
             <MainContent
               todos={todos}
               createTodo={createTodo}
               deleteTodo={deleteTodo}
               signOut={signOut}
+              userId={user?.signInDetails?.loginId}
             />
           );
         }}
